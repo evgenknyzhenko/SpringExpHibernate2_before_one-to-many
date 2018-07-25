@@ -2,6 +2,8 @@ package app.model;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "CATEGORIES")
@@ -13,12 +15,9 @@ public class Category implements Serializable {
     @Column(name = "CATEGORY_NAME")
     private String categoryName;
 
-    public Category() {
-    }
+    @OneToMany(mappedBy = "category", fetch = FetchType.LAZY)
+    private List<Product> productList = new ArrayList<>();
 
-    public Category(String categoryName) {
-        this.categoryName = categoryName;
-    }
 
     public Long getId() {
         return id;
@@ -34,6 +33,14 @@ public class Category implements Serializable {
 
     public void setCategoryName(String categoryName) {
         this.categoryName = categoryName;
+    }
+
+    public List<Product> getProductList() {
+        return productList;
+    }
+
+    public void setProductList(List<Product> productList) {
+        this.productList = productList;
     }
 
     @Override

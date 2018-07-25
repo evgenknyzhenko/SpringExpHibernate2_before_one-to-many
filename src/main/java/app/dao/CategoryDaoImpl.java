@@ -26,9 +26,9 @@ public class CategoryDaoImpl implements CategoryDao {
                 .createQuery("from Category", Category.class).list();
     }
 
-    private Category getCategoryById(Long id) {
+    public Category getCategoryById(Long id) {
         return sessionFactory.getCurrentSession()
-                .createQuery("from Category where Id =:Id", Category.class)
+                .createQuery("select c from Category c join fetch c.productList p where c.id =:Id", Category.class)
                 .setParameter("Id", id)
                 .uniqueResult();
     }

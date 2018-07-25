@@ -37,4 +37,12 @@ public class CategoryController {
         vm.addObject("categoriesList", categoryService.getAllCategories());
         return vm;
     }
+
+    @RequestMapping(path="/category", method = RequestMethod.GET)
+    public ModelAndView categoryPage(@RequestParam(name = "c_id")Long id) {
+        ModelAndView vm = new ModelAndView();
+        vm.setViewName("category");
+        vm.addObject("productList", categoryService.getCategoryById(id).getProductList());
+        return vm;
+    }
 }

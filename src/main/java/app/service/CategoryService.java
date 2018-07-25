@@ -8,4 +8,6 @@ public interface CategoryService {
     Category addCategory(Category category);
 
     List getAllCategories();
+
+    Category getCategoryById(Long id);
 }

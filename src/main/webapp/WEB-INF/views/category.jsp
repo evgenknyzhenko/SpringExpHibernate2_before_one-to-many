@@ -3,17 +3,18 @@
   Created by IntelliJ IDEA.
   User: Евгений
   Date: 25.07.2018
-  Time: 15:06
+  Time: 19:40
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>All Categories</title>
+    <title>Category</title>
 </head>
 <body>
-    <c:forEach var="c" items="${categoriesList}">
-        <a href="/category?c_id=${c.id}"><c:out value="${c.categoryName}"/> </a><br/>
+    <c:forEach var="c" items="${productList}">
+        <c:out value="${c}"/><br/>
     </c:forEach>
+
 </body>
 </html>
